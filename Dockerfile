@@ -9,7 +9,7 @@ WORKDIR /app
 COPY . /app
 
 # Install any needed packages specified in package.json
-RUN npm install
+RUN npm install prisma zod
 
 # Make port 3000 available to the world outside this container
 EXPOSE 3000
@@ -19,3 +19,5 @@ ENV NODE_ENV=production
 
 # Run app.js when the container launches
 CMD ["npm", "start"]
+
+
