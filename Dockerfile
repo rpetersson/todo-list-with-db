@@ -1,23 +1,7 @@
-
-# Use an official Node.js runtime as a parent image
-FROM node:14-alpine
-
-# Set the working directory to /app
+FROM node:21-alpine3.17
 WORKDIR /app
-
-# Copy the current directory contents into the container at /app
-COPY . /app
-
-# Install any needed packages specified in package.json
-RUN npm install prisma zod
-
-# Make port 3000 available to the world outside this container
+COPY package*.json ./
+RUN npm install
+COPY . .
 EXPOSE 3000
-
-# Define environment variable
-ENV NODE_ENV=production
-
-# Run app.js when the container launches
-CMD ["npm", "start"]
-
-
+CMD npm run dev
