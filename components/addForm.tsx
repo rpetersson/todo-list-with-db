@@ -1,9 +1,7 @@
 "use client"
 import { useFormState } from "react-dom";
 import { useFormStatus } from "react-dom";
-import { Prisma } from "@prisma/client";
 import { PrismaClient } from "@prisma/client";
-import { revalidatePath } from "next/cache";
 import { addRecord } from "@/app/page";
 import { init } from "next/dist/compiled/webpack/webpack";
 
