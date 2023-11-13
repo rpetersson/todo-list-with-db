@@ -8,7 +8,7 @@ const initialState = {
     message: ''
 }
 
-export async function remove(prevState: any, id: string) {
+export async function removeData(prevState: any, id: string) {
     await prisma.todo.delete({
       where: {
         id: id,
@@ -19,7 +19,7 @@ export async function remove(prevState: any, id: string) {
   }
   
 export function DeleteForm({ id }: { id: string }) {
-    const [state, formAction] = useFormState(remove, initialState)
+    const [state, formAction] = useFormState(removeData, initialState)
     return (
       <form action={formAction}>
   
