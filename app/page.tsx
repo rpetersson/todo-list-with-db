@@ -1,7 +1,7 @@
 "use server";
-import { AddForm } from "@/components/addForm";
-import { DeleteForm } from "@/components/deleteForm";
+import { AddForm } from "./components/addForm";
 import { PrismaClient } from "@prisma/client";
+import { DeleteForm } from "./components/deleteForm";
 
 const prisma = new PrismaClient();
 
