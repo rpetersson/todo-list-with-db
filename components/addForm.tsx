@@ -2,7 +2,8 @@
 import { useFormState } from "react-dom";
 import { useFormStatus } from "react-dom";
 import { PrismaClient } from "@prisma/client";
-import { addRecord } from "@/app/page";
+import { addRecord } from "@/app/actions";
+
 
 const prisma = new PrismaClient();
 

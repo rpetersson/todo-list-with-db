@@ -1,5 +1,6 @@
+"use client"
+import { deleteRecord } from "@/app/actions";
 import { PrismaClient } from "@prisma/client";
-import { revalidatePath } from "next/cache";
 import { useFormState } from "react-dom";
 
 const prisma = new PrismaClient();
@@ -8,21 +9,24 @@ const initialState = {
     message: ''
 }
 
-export async function removeData(prevState: any, id: string) {
-    await prisma.todo.delete({
-      where: {
-        id: id,
-      },
-    });
-    revalidatePath("/"); // To update the page.
-    return { message: "asd" };
+ export function RemoveButton() {
+    return (
+        <button type="submit" aria-disabled={false} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Remove
+        </button>
+     
+    );
   }
   
 export function DeleteForm({ id }: { id: string }) {
-    const [state, formAction] = useFormState(removeData, initialState)
+    const [state, formAction] = useFormState(deleteRecord, initialState)
     return (
-      <form action={formAction}>
-  
+        <form action={formAction}>
+          <input type="hidden" name="id" value={id}>
+
+          </input>
+        <RemoveButton />
+
       </form>
-    );
+    )
   }
