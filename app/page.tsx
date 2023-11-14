@@ -14,7 +14,7 @@ export default async function Home() {
           <h1>Todo:</h1>
           <AddForm />
           <ul>
-            {todoTasks.map((todoTask) => (
+            {todoTasks.map((todoTask:{id:string, todoTask:string}) => (
               <li key={todoTask.id}>
                 {todoTask.todoTask}
                 <DeleteForm id={todoTask.id} />
