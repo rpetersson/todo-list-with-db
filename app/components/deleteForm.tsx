@@ -1,9 +1,6 @@
 "use client"
-import { deleteRecord } from "@/app/actions";
-import { PrismaClient } from "@prisma/client";
+import { deleteRecordAzTable } from "@/app/actions";
 import { useFormState } from "react-dom";
-
-const prisma = new PrismaClient();
 
 const initialState = {
     message: ''
@@ -19,7 +16,7 @@ const initialState = {
   }
   
 export function DeleteForm({ id }: { id: string }) {
-    const [state, formAction] = useFormState(deleteRecord, initialState)
+    const [state, formAction] = useFormState(deleteRecordAzTable, initialState)
     return (
         <form action={formAction}>
           <input type="hidden" name="id" value={id}>
