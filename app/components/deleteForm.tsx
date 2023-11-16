@@ -23,7 +23,6 @@ export function DeleteForm({ id }: { id: string }) {
 
           </input>
         <RemoveButton />
-
       </form>
     )
   }

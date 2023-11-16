@@ -29,7 +29,7 @@ export async function addRecordAzTable(prevState: any, formData: FormData) {
       rowKey: crypto.randomUUID(),
       todo: data.todo,
     };
-    tableClient.createEntity(dataToAdd);
+    await tableClient.createEntity(dataToAdd);
     revalidatePath("/"); // To update the page.
     return { message: "Success" };
   } catch (e) {
@@ -38,23 +38,11 @@ export async function addRecordAzTable(prevState: any, formData: FormData) {
 }
 
 export async function deleteRecordAzTable(prevState: any, formData: FormData) {
-  console.log(formData.get("id"));
-
-  const schema = z.object({
-    todo: z.string().min(1),
-  });
-
-  const data = schema.parse({
-    todo: formData.get("todo"),
-  });
+  const rowKey = formData.get("id")
+  
+  console.log(rowKey)
   try {
-    const dataToAdd = {
-      partitionKey: "todoTasks",
-      rowKey: crypto.randomUUID(),
-      todo: data.todo,
-    };
-    await tableClient.createEntity(dataToAdd);
-
+    await tableClient.deleteEntity("todoTasks", rowKey as string, );
     revalidatePath("/"); // To update the page.
     return { message: "Success" };
   } catch (e) {
