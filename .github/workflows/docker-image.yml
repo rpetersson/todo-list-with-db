@@ -22,4 +22,4 @@ jobs:
         password: ${{ secrets.ACR_PASSWORD }}
 
     - run: |
-        az acr build -t todolist-az:latest --registry rpacr01.azurecr.io .
+        docker build . -t todolist-az:latest 
