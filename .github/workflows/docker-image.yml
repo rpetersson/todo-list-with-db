@@ -17,7 +17,7 @@ jobs:
     - name: Docker login
       uses: azure/docker-login@v1
       with:
-        login-server: contoso.azurecr.io
+        login-server: rpacr01.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
