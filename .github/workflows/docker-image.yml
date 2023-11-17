@@ -21,5 +21,4 @@ jobs:
         password: ${{ secrets.ACR_PASSWORD }}
 
     - run: |
-        docker build . -t rpacr.azurecr.io/todoapp-az:latest
-        docker push rpacr.azurecr.io/todoapp-az:latest
+        az acr build . -t rpacr.azurecr.io/todoapp-az:latest
