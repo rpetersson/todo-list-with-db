@@ -1,18 +1,33 @@
-name: Docker Image CI
+
+name: Build and Push Docker Image to ACR
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+
+env:
+  IMAGE_NAME: my-image
+  ACR_NAME: my-acr
+  ACR_REGISTRY: $ACR_NAME.azurecr.io
+  DOCKERFILE_PATH: ./Dockerfile
 
 jobs:
-
-  build:
-
+  build-and-push:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: az acr build . --file Dockerfile --tag todolist-az:latest
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Login to ACR
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ env.ACR_REGISTRY }}
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: todolist-az:latest
