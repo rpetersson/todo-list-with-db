@@ -1,5 +1,5 @@
 "use client"
-import { deleteRecordAzTable } from "@/app/actions";
+import { deleteRecordAzTable } from "@/app/components/actions";
 import { useFormState } from "react-dom";
 
 const initialState = {

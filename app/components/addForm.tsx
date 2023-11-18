@@ -1,7 +1,7 @@
 "use client";
 import { useFormState } from "react-dom";
 import { useFormStatus } from "react-dom";
-import { addRecordAzTable } from "@/app/actions";
+import { addRecordAzTable } from "@/app/components/actions";
 
 const initialState = {
   message: "",
