@@ -4,9 +4,7 @@ import { DefaultAzureCredential } from "@azure/identity";
 import { AddForm } from "./components/addForm";
 import { DeleteForm } from "./components/deleteForm";
 
-const credential = new DefaultAzureCredential();
 const account = "todolistwithdb";
-const tableName = "todo";
 const sas: string | undefined = process.env.SAS_TOKEN ?? "default";
 const tableClient = new TableClient(
   `https://${account}.table.core.windows.net`,
